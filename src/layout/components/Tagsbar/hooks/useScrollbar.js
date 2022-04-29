@@ -42,8 +42,8 @@ export const useScrollbar = tagsItem => {
   }
 
   const moveToTarget = currentTag => {
-    const containerWidth = scrollContainer.value.scrollbar.offsetWidth
-    const scrollWrapper = scrollContainer.value.wrap
+    const containerWidth = scrollContainer.value.scrollbar$.offsetWidth
+    const scrollWrapper = scrollContainer.value.wrap$
     const tagList = tagsItem.value
 
     let firstTag = null

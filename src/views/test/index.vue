@@ -10,29 +10,29 @@
   >
     <!-- 工具栏 -->
     <template #toolbar>
-      <el-button type="primary" icon="el-icon-delete" @click="batchDelete">
+      <el-button type="primary" icon="Delete" @click="batchDelete">
         批量删除
       </el-button>
       <el-button
         type="primary"
-        icon="el-icon-plus"
+        icon="Plus"
         @click="$router.push('/test/add')"
       >
         添加一条
       </el-button>
-      <el-button type="primary" icon="el-icon-refresh" @click="refresh">
+      <el-button type="primary" icon="Refresh" @click="refresh">
         刷新
       </el-button>
     </template>
     <template #operate="scope">
       <el-button
-        size="mini"
+        size="small"
         type="primary"
         @click="$router.push(`/test/edit/${scope.row.id}`)"
       >
         编辑
       </el-button>
-      <el-button size="mini" type="danger">删除</el-button>
+      <el-button size="small" type="danger">删除</el-button>
     </template>
   </pro-table>
 </template>

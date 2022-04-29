@@ -56,7 +56,7 @@
       <template #title>
         <span style="padding-right: 10px;">错误日志</span>
         <el-button
-          size="mini"
+          size="small"
           type="primary"
           icon="el-icon-delete"
           @click="clearAll"

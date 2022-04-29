@@ -30,7 +30,7 @@ export default [
     meta: {
       title: '测试页面',
     },
-    icon: 'el-icon-location',
+    icon: 'Location',
     children: [
       {
         path: '',

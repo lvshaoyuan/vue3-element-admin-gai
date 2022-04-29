@@ -41,6 +41,7 @@ const app = createApp(App)
 
 // 引入element-plus
 import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 import './assets/style/element-variables.scss'
 // 引入中文语言包
 import 'dayjs/locale/zh-cn'
@@ -71,6 +72,13 @@ Object.values(Directives).forEach(fn => fn(app))
 // 错误日志
 import useErrorHandler from './error-log'
 useErrorHandler(app)
+
+// 引入全部icon
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+Object.entries(ElementPlusIconsVue).forEach(([key, component]) => {
+  app.component(key, component)
+})
+app.config.globalProperties.$icon = ElementPlusIconsVue
 
 app
   .use(ElementPlus, {

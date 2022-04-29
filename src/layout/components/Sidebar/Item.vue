@@ -32,21 +32,23 @@
  -->
 
 <template>
-  <i v-if="isElementIcon" :class="`icon ${icon}`" />
+  <component v-if="isElementIcon" class="icon" :is="icons[icon]"></component>
   <svg-icon class="icon" v-else-if="!!icon" :name="icon" />
   <span>{{ title }}</span>
 </template>
 
 <script>
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, getCurrentInstance } from 'vue'
 
 export default defineComponent({
   props: ['title', 'icon'],
   setup({ icon }) {
-    const isElementIcon = computed(() => icon && icon.startsWith('el-icon'))
+    const isElementIcon = computed(() => icon && !icon.startsWith('el-icon') && /[A-Z]/.test(icon[0]))
+    const icons = getCurrentInstance()?.appContext.config.globalProperties.$icon
 
     return {
       isElementIcon,
+      icons
     }
   },
 })

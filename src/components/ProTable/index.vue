@@ -189,10 +189,10 @@
         ></el-input>
       </el-form-item>
       <el-form-item class="search-btn">
-        <el-button type="primary" icon="el-icon-search" @click="handleSearch">
+        <el-button type="primary" icon="Search" @click="handleSearch">
           查询
         </el-button>
-        <el-button @click="handleReset" icon="el-icon-refresh-right">
+        <el-button @click="handleReset" icon="RefreshRight">
           重置
         </el-button>
       </el-form-item>

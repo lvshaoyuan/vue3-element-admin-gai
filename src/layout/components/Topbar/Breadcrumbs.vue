@@ -35,9 +35,9 @@
  -->
 
 <template>
-  <el-breadcrumb
-    separator-class="el-icon-arrow-right"
+   <el-breadcrumb
     class="breadcrumb"
+    separator-class="el-icon-arrow-right"
     :class="{
       mobile: device === 'mobile',
       show: isHorizontalMenu,
@@ -53,6 +53,7 @@
       {{ item.meta.title }}
     </el-breadcrumb-item>
   </el-breadcrumb>
+
 </template>
 <script>
 import { defineComponent, computed, ref, onBeforeMount, watch } from 'vue'
@@ -117,9 +118,6 @@ export default defineComponent({
   ::v-deep(a),
   ::v-deep(.is-link) {
     font-weight: normal;
-  }
-  ::v-deep(.el-breadcrumb__item) {
-    float: none;
   }
   .no_link {
     ::v-deep(.el-breadcrumb__inner) {

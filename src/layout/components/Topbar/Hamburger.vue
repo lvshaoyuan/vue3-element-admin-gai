@@ -26,11 +26,12 @@
  -->
 
 <template>
-  <i
-    class="fold-btn el-icon-s-fold"
-    :class="{ collapse: collapse }"
-    @click="handleToggleMenu"
-  ></i>
+  <el-icon 
+    class="fold-btn" 
+    :class="{ collapse: collapse }" 
+    @click="handleToggleMenu">
+    <fold />
+  </el-icon>
 </template>
 <script>
 import { defineComponent, computed } from 'vue'
