@@ -231,6 +231,9 @@
           <template #default="scope" v-if="!!item.tdSlot">
             <slot :name="item.tdSlot" v-bind="scope"></slot>
           </template>
+          <template #default="scope" v-else-if="item.code && !item.tdSlot">
+            {{ scope.row[item.prop].value }}
+          </template>
         </el-table-column>
       </el-table>
     </div>

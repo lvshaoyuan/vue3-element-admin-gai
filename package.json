@@ -42,6 +42,7 @@
     "lint-staged": "^9.5.0",
     "mockjs": "^1.1.0",
     "prettier": "^1.19.1",
+    "qs": "^6.10.3",
     "sass": "^1.41.1",
     "vite": "^2.1.0",
     "vite-plugin-mock": "^2.3.0",
