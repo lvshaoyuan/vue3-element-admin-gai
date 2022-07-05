@@ -1,54 +1,12 @@
 /*
- *                                |~~~~~~~|
- *                                |       |
- *                                |       |
- *                                |       |
- *                                |       |
- *                                |       |
- *     |~.\\\_\~~~~~~~~~~~~~~xx~~~         ~~~~~~~~~~~~~~~~~~~~~/_//;~|
- *     |  \  o \_         ,XXXXX),                         _..-~ o /  |
- *     |    ~~\  ~-.     XXXXX`)))),                 _.--~~   .-~~~   |
- *      ~~~~~~~`\   ~\~~~XXX' _/ ';))     |~~~~~~..-~     _.-~ ~~~~~~~
- *               `\   ~~--`_\~\, ;;;\)__.---.~~~      _.-~
- *                 ~-.       `:;;/;; \          _..-~~
- *                    ~-._      `''        /-~-~
- *                        `\              /  /
- *                          |         ,   | |
- *                           |  '        /  |
- *                            \/;          |
- *                             ;;          |
- *                             `;   .       |
- *                             |~~~-----.....|
- *                            | \             \
- *                           | /\~~--...__    |
- *                           (|  `\       __-\|
- *                           ||    \_   /~    |
- *                           |)     \~-'      |
- *                            |      | \      '
- *                            |      |  \    :
- *                             \     |  |    |
- *                              |    )  (    )
- *                               \  /;  /\  |
- *                               |    |/   |
- *                               |    |   |
- *                                \  .'  ||
- *                                |  |  | |
- *                                (  | |  |
- *                                |   \ \ |
- *                                || o `.)|
- *                                |`\\) |
- *                                |       |
- *                                |       |
+ * @Author: oldlv 15237336850@163.com
+ * @Date: 2022-07-03 18:25:35
+ * @LastEditors: oldlv 15237336850@163.com
+ * @LastEditTime: 2022-07-05 14:09:30
+ * @FilePath: /vue3-element-admin-gai/src/default-settings.js
+ * @Description:
  *
- * @Descripttion:
- * @version:
- * @Date: 2021-07-22 17:22:14
- * @LastEditors: huzhushan@126.com
- * @LastEditTime: 2021-09-18 15:02:01
- * @Author: huzhushan@126.com
- * @HomePage: https://huzhushan.gitee.io/vue3-element-admin
- * @Github: https://github.com/huzhushan/vue3-element-admin
- * @Donate: https://huzhushan.gitee.io/vue3-element-admin/donate/
+ * Copyright (c) 2022 by oldlv 15237336850@163.com, All Rights Reserved.
  */
 
 export default {

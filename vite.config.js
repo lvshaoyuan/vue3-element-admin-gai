@@ -2,8 +2,8 @@
  * @Descripttion:
  * @version:
  * @Date: 2021-04-20 11:06:21
- * @LastEditors: huzhushan@126.com
- * @LastEditTime: 2021-09-18 15:09:15
+ * @LastEditors: oldlv 15237336850@163.com
+ * @LastEditTime: 2022-07-03 22:50:44
  * @Author: huzhushan@126.com
  * @HomePage: https://huzhushan.gitee.io/vue3-element-admin
  * @Github: https://github.com/huzhushan/vue3-element-admin
@@ -46,7 +46,7 @@ export default env => {
       viteESLint({
         include: ['src/**/*.vue', 'src/**/*.js'],
       }),
-      vueSetupExtend()
+      vueSetupExtend(),
     ],
     css: {
       preprocessorOptions: {

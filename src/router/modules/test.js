@@ -2,8 +2,8 @@
  * @Descripttion:
  * @version:
  * @Date: 2021-04-21 09:18:32
- * @LastEditors: huzhushan@126.com
- * @LastEditTime: 2021-07-26 16:30:58
+ * @LastEditors: oldlv 15237336850@163.com
+ * @LastEditTime: 2022-07-05 00:37:11
  * @Author: huzhushan@126.com
  * @HomePage: https://huzhushan.gitee.io/vue3-element-admin
  * @Github: https://github.com/huzhushan/vue3-element-admin
@@ -30,6 +30,7 @@ export default [
     meta: {
       title: '测试页面',
     },
+    // icon 图标大写开头 证明是element 图标（不要el-icon-） svg图标下载下来命名小写就行
     icon: 'Location',
     children: [
       {
@@ -39,6 +40,7 @@ export default [
         meta: {
           title: '列表',
         },
+        icon: 'Bell',
       },
       {
         path: 'add',
@@ -65,6 +67,7 @@ export default [
         meta: {
           title: '权限测试',
         },
+        icon: 'Camera',
       },
       {
         path: 'noauth',

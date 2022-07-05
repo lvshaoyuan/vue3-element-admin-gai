@@ -13,11 +13,7 @@
       <el-button type="primary" icon="Delete" @click="batchDelete">
         批量删除
       </el-button>
-      <el-button
-        type="primary"
-        icon="Plus"
-        @click="$router.push('/test/add')"
-      >
+      <el-button type="primary" icon="Plus" @click="$router.push('/test/add')">
         添加一条
       </el-button>
       <el-button type="primary" icon="Refresh" @click="refresh">

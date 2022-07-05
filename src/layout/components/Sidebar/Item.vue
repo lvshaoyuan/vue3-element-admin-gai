@@ -1,39 +1,21 @@
 <!--
- *                   ___====-_  _-====___
- *             _--^^^#####//      \\#####^^^--_
- *          _-^##########// (    ) \\##########^-_
- *         -############//  |\^^/|  \\############-
- *       _/############//   (@::@)   \############\_
- *      /#############((     \\//     ))#############\
- *     -###############\\    (oo)    //###############-
- *    -#################\\  / VV \  //#################-
- *   -###################\\/      \//###################-
- *  _#/|##########/\######(   /\   )######/\##########|\#_
- *  |/ |#/\#/\#/\/  \#/\##\  |  |  /##/\#/  \/\#/\#/\#| \|
- *  `  |/  V  V  `   V  \#\| |  | |/#/  V   '  V  V  \|  '
- *     `   `  `      `   / | |  | | \   '      '  '   '
- *                      (  | |  | |  )
- *                     __\ | |  | | /__
- *                    (vvv(VVV)(VVV)vvv)
+ * @Author: oldlv 15237336850@163.com
+ * @Date: 2022-07-03 18:25:35
+ * @LastEditors: oldlv 15237336850@163.com
+ * @LastEditTime: 2022-07-05 00:16:54
+ * @FilePath: /vue3-element-admin-gai/src/layout/components/Sidebar/Item.vue
+ * @Description: 
  * 
- *      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * 
- *                神兽保佑            永无BUG
- * 
- * @Descripttion: 
- * @version: 
- * @Date: 2021-04-20 11:06:21
- * @LastEditors: huzhushan@126.com
- * @LastEditTime: 2021-04-21 12:46:37
- * @Author: huzhushan@126.com
- * @HomePage: https://huzhushan.gitee.io/vue3-element-admin
- * @Github: https://github.com/huzhushan/vue3-element-admin
- * @Donate: https://huzhushan.gitee.io/vue3-element-admin/donate/
- -->
-
+ * Copyright (c) 2022 by oldlv 15237336850@163.com, All Rights Reserved. 
+-->
 <template>
   <component v-if="isElementIcon" class="icon" :is="icons[icon]"></component>
-  <svg-icon class="icon" v-else-if="!!icon" :name="icon" />
+  <svg-icon
+    class="icon"
+    v-if="!isElementIcon && typeof icon === 'string'"
+    :name="icon"
+  />
+
   <span>{{ title }}</span>
 </template>
 
@@ -43,12 +25,16 @@ import { computed, defineComponent, getCurrentInstance } from 'vue'
 export default defineComponent({
   props: ['title', 'icon'],
   setup({ icon }) {
-    const isElementIcon = computed(() => icon && !icon.startsWith('el-icon') && /[A-Z]/.test(icon[0]))
+    const isElementIcon = computed(
+      () =>
+        typeof icon === 'string' &&
+        !icon.startsWith('el-icon') &&
+        /[A-Z]/.test(icon[0])
+    )
     const icons = getCurrentInstance()?.appContext.config.globalProperties.$icon
-
     return {
       isElementIcon,
-      icons
+      icons,
     }
   },
 })

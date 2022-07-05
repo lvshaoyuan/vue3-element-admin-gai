@@ -7,9 +7,9 @@ import qs from 'qs'
 let pending = [] //声明一个数组用于存储每个ajax请求的取消函数和ajax标识
 let removePending = config => {
   for (let p in pending) {
-    if (pending[p].u === config.url + "&" + config.method) {
+    if (pending[p].u === config.url + '&' + config.method) {
       //当当前请求在数组中存在时执行函数体
-      pending[p].f(config.url + "取消") //执行取消操作
+      pending[p].f(config.url + '取消') //执行取消操作
       pending.splice(p, 1) //把这条记录从数组中移除
     }
   }
@@ -27,60 +27,60 @@ function isNumber(val) {
 }
 
 function renderFormData(formData, params, preference) {
-  if (preference == undefined) preference = "";
+  if (preference == undefined) preference = ''
   Object.keys(params).map((key, index) => {
-    if (Object.prototype.toString.call(params[key]) === "[object Object]") {
+    if (Object.prototype.toString.call(params[key]) === '[object Object]') {
       if (isNumber(key)) {
-        renderFormData(formData, params[key], preference + "[" + key + "]");
+        renderFormData(formData, params[key], preference + '[' + key + ']')
       } else {
-        let preference_key = "";
-        if (preference == "") {
-          preference_key = preference + key;
+        let preference_key = ''
+        if (preference == '') {
+          preference_key = preference + key
         } else {
-          preference_key = preference + "." + key;
+          preference_key = preference + '.' + key
         }
-        renderFormData(formData, params[key], preference_key);
+        renderFormData(formData, params[key], preference_key)
       }
     } else if (Array.isArray(params[key])) {
-      let preference_key = "";
-      if (preference == "") {
-        preference_key = preference + key;
+      let preference_key = ''
+      if (preference == '') {
+        preference_key = preference + key
       } else {
-        preference_key = preference + "." + key;
+        preference_key = preference + '.' + key
       }
       if (isNumber(key)) {
-        renderFormData(formData, params[key], preference + "[" + key + "]");
+        renderFormData(formData, params[key], preference + '[' + key + ']')
       } else {
-        renderFormData(formData, params[key], preference_key);
+        renderFormData(formData, params[key], preference_key)
       }
     } else {
       if (isNumber(key)) {
-        formData.append(preference + "[" + key + "]", params[key]);
+        formData.append(preference + '[' + key + ']', params[key])
         // console.log(
         //   preference + "[" + key + "]",
         //   formData.getAll(preference + "[" + key + "]")
         // );
       } else {
-        let preference_key = "";
-        if (preference == "") {
-          preference_key = preference + key;
+        let preference_key = ''
+        if (preference == '') {
+          preference_key = preference + key
         } else {
-          preference_key = preference + "." + key;
+          preference_key = preference + '.' + key
         }
-        formData.append(preference_key, params[key]);
+        formData.append(preference_key, params[key])
         // console.log(preference + key, formData.getAll(preference + key));
       }
     }
-  });
+  })
 }
 
 const config = {
-  method: "get",
+  method: 'get',
   // 基础url前缀
-  baseURL: "/",
+  baseURL: '/',
   // 请求头信息
   headers: {
-    "Content-Type": "application/jsoncharset=UTF-8"
+    'Content-Type': 'application/jsoncharset=UTF-8',
   },
   // 参数
   data: {},
@@ -89,12 +89,12 @@ const config = {
   // 携带凭证
   withCredentials: false,
   // 返回数据类型
-  responseType: "json",
+  responseType: 'json',
   // 是否需要把headers返回
   nedResHeaders: false,
 }
 
-const gotoLogin = (error=undefined) => {
+const gotoLogin = (error = undefined) => {
   // 校验是否有 refresh_token
   const { authorization } = store.state.app
   if (!authorization || !authorization.refresh_token) {
@@ -120,7 +120,6 @@ const gotoLogin = (error=undefined) => {
   }
 }
 
-
 function $axios(options) {
   return new Promise((resolve, reject) => {
     const service = axios.create(config)
@@ -138,16 +137,16 @@ function $axios(options) {
           removePending(config) //在一个ajax发送前执行一下取消操作
           config.cancelToken = new axios.CancelToken(cancel => {
             window.__asxiosPromiseArr.push({
-              cancel
+              cancel,
             })
             // 这里的ajax标识我是用请求地址&请求方式拼接的字符串，当然你可以选择其他的一些方式
             pending.push({
-              u: config.url + "&" + config.method,
-              f: cancel
+              u: config.url + '&' + config.method,
+              f: cancel,
             })
           })
         }
-        
+
         return config
       },
       error => {
@@ -168,7 +167,7 @@ function $axios(options) {
         if (options.nedResHeaders) {
           return {
             data,
-            headers: response.headers
+            headers: response.headers,
           }
         } else {
           return data
@@ -254,7 +253,7 @@ function $http(options, success, failure) {
     })
   }
 
-  let headers = !!options.headers ? options.headers : config.headers
+  let headers = options.headers ? options.headers : config.headers
   if (!options.params) {
     options.params = {}
   }
@@ -262,34 +261,37 @@ function $http(options, success, failure) {
   // options.params.fuckie = new Date().getTime()
 
   return $axios({
-    method: !!options.method ? options.method : "GET",
+    method: options.method ? options.method : 'GET',
     url: options.url,
     headers: headers,
-    responseType: options.hasOwnProperty('responseType') ? options.responseType : config.responseType,
-    params: !!options.method ?
-      options.method === "GET" ||
-      options.method === "get" ||
-      options.method === "DELETE" ||
-      options.method === "delete" ?
-      options.params :
-      null : options.params,
-    data: (function () {
+    responseType: options.hasOwnProperty('responseType')
+      ? options.responseType
+      : config.responseType,
+    params: options.method
+      ? options.method === 'GET' ||
+        options.method === 'get' ||
+        options.method === 'DELETE' ||
+        options.method === 'delete'
+        ? options.params
+        : null
+      : options.params,
+    data: (function() {
       if (
-        options.method === "POST" ||
-        options.method === "post" ||
-        options.method === "PUT" ||
-        options.method === "put"
+        options.method === 'POST' ||
+        options.method === 'post' ||
+        options.method === 'PUT' ||
+        options.method === 'put'
       ) {
         if (
           !!options.headers &&
-          options.headers["Content-Type"] == "multipart/form-data"
+          options.headers['Content-Type'] == 'multipart/form-data'
         ) {
           let formData = new FormData()
           renderFormData(formData, options.data)
           return formData
         } else if (
           !!options.headers &&
-          options.headers["Content-Type"] == "text/plain"
+          options.headers['Content-Type'] == 'text/plain'
         ) {
           return qs.stringify(options.data)
         } else {
@@ -299,12 +301,15 @@ function $http(options, success, failure) {
         return options.data
       }
     })(),
-    baseURL: !!options.baseURL ? options.baseURL : config.baseURL,
-    withCredentials: !!options.withCredentials ?
-      options.withCredentials : config.withCredentials,
-    timeout: !!options.timeout ? options.timeout : config.timeout,
-    ignoreReq: !!options.ignoreReq ? options.ignoreReq : null,
-    nedResHeaders: options.hasOwnProperty('nedResHeaders') ? options.nedResHeaders : config.nedResHeaders,
+    baseURL: options.baseURL ? options.baseURL : config.baseURL,
+    withCredentials: options.withCredentials
+      ? options.withCredentials
+      : config.withCredentials,
+    timeout: options.timeout ? options.timeout : config.timeout,
+    ignoreReq: options.ignoreReq ? options.ignoreReq : null,
+    nedResHeaders: options.hasOwnProperty('nedResHeaders')
+      ? options.nedResHeaders
+      : config.nedResHeaders,
   })
     .then(res => {
       if (!!options.loading && options.loading) loading.close()
@@ -313,8 +318,8 @@ function $http(options, success, failure) {
           ElMessage({
             showClose: true,
             message: res.message,
-            type: "success",
-            duration: 5 * 1000
+            type: 'success',
+            duration: 5 * 1000,
           })
         }
         success && success(res)
@@ -324,7 +329,7 @@ function $http(options, success, failure) {
       } else {
         if (
           !!res.status &&
-          (res.status == "0001" || res.status == "0002" || res.status == "0003")
+          (res.status == '0001' || res.status == '0002' || res.status == '0003')
         ) {
           console.error(res)
           gotoLogin()
@@ -342,14 +347,14 @@ function $http(options, success, failure) {
                 ElMessage({
                   showClose: true,
                   message: res.message,
-                  type: "error",
-                  duration: 5 * 1000
+                  type: 'error',
+                  duration: 5 * 1000,
                 })
               }
             }
 
             if (res.code == 401 || res.code == 408 || res.code == 409) {
-              if (document.getElementsByClassName("el-message").length === 0) {
+              if (document.getElementsByClassName('el-message').length === 0) {
                 messageFn()
               }
               gotoLogin()
@@ -366,18 +371,18 @@ function $http(options, success, failure) {
     })
     .catch(err => {
       if (axios.isCancel(err)) {
-        console.log("Rquest canceled: " + err.message)
+        console.log('Rquest canceled: ' + err.message)
         if (!!options.loading && options.loading) loading.close()
       } else {
-        console.log("****************")
+        console.log('****************')
         console.error(err)
-        console.log("****************")
+        console.log('****************')
         if (!options.hideError) {
           ElMessage({
             showClose: true,
             message: err.message,
-            type: "error",
-            duration: 5 * 1000
+            type: 'error',
+            duration: 5 * 1000,
           })
         }
         if (!!options.loading && options.loading) loading.close()

@@ -1,25 +1,3 @@
-<!--
- *           佛曰:  
- *                   写字楼里写字间，写字间里程序员；  
- *                   程序人员写程序，又拿程序换酒钱。  
- *                   酒醒只在网上坐，酒醉还来网下眠；  
- *                   酒醉酒醒日复日，网上网下年复年。  
- *                   但愿老死电脑间，不愿鞠躬老板前；  
- *                   奔驰宝马贵者趣，公交自行程序员。  
- *                   别人笑我忒疯癫，我笑自己命太贱；  
- *                   不见满街漂亮妹，哪个归得程序员？
- * 
- * @Descripttion: 
- * @version: 
- * @Date: 2021-04-20 11:06:21
- * @LastEditors: huzhushan@126.com
- * @LastEditTime: 2021-09-18 17:50:46
- * @Author: huzhushan@126.com
- * @HomePage: https://huzhushan.gitee.io/vue3-element-admin
- * @Github: https://github.com/huzhushan/vue3-element-admin
- * @Donate: https://huzhushan.gitee.io/vue3-element-admin/donate/
- -->
-
 <template>
   <div class="tags-container" :class="{ hide: !isTagsbarShow }">
     <el-scrollbar
@@ -44,11 +22,11 @@
           @contextmenu.prevent="openMenu(tag, $event)"
         >
           <span class="title">{{ tag.title }}</span>
-          <span
+          <Close
             v-if="!isAffix(tag)"
             class="el-icon-close"
             @click.prevent.stop="closeTag(tag)"
-          />
+          ></Close>
         </div>
       </router-link>
     </el-scrollbar>
@@ -72,6 +50,7 @@ import { defineComponent, computed, getCurrentInstance } from 'vue'
 import { useTags } from './hooks/useTags'
 import { useContextMenu } from './hooks/useContextMenu'
 import { useStore } from 'vuex'
+import { Close } from '@element-plus/icons-vue'
 
 export default defineComponent({
   name: 'Tagsbar',
@@ -97,6 +76,7 @@ export default defineComponent({
       onScroll,
       ...tags,
       ...contextMenu,
+      Close,
     }
   },
 })
@@ -150,27 +130,28 @@ export default defineComponent({
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      margin-right: 4px;
     }
-    .el-icon-close {
-      color: #5c5c5c;
-      margin-left: 8px;
-      width: 16px;
-      height: 16px;
-      vertical-align: 2px;
-      border-radius: 50%;
-      text-align: center;
-      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-      transform-origin: 100% 50%;
-      &:before {
-        transform: scale(0.8);
-        display: inline-block;
-        vertical-align: -2px;
-      }
-      &:hover {
-        background-color: #333;
-        color: #fff;
-      }
-    }
+    // .el-icon-close {
+    //   color: #5c5c5c;
+    //   margin-left: 8px;
+    //   width: 16px;
+    //   height: 16px;
+    //   vertical-align: 2px;
+    //   border-radius: 50%;
+    //   text-align: center;
+    //   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    //   transform-origin: 100% 50%;
+    //   &:before {
+    //     transform: scale(0.6);
+    //     display: inline-block;
+    //     vertical-align: -2px;
+    //   }
+    //   &:hover {
+    //     background-color: #333;
+    //     color: #fff;
+    //   }
+    // }
   }
 }
 .contextmenu {
@@ -192,6 +173,27 @@ export default defineComponent({
     cursor: pointer;
     &:hover {
       background: #eee;
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+// reset elenent css of el-icon-close
+.tags-container {
+  .tags-item {
+    border-radius: 3px;
+    .el-icon-close {
+      border-radius: 6px;
+      width: 12px;
+      height: 12px;
+      vertical-align: -2px;
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      transform-origin: 100% 50%;
+      &:hover {
+        background-color: #333;
+        color: #fff;
+      }
     }
   }
 }
